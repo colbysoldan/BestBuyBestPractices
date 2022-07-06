@@ -32,6 +32,16 @@ namespace BestBuyBestPractices
                 Console.WriteLine(dept.Name);
             }
 
+            var productRepo = new DapperProductRepository(conn);
+
+            productRepo.CreateProduct("newThing", 20, 1);
+
+            var products = productRepo.GetAllProducts();
+
+            foreach(var prod in products)
+            {
+                Console.WriteLine($"{prod.ProductID} {prod.Name}");
+            }
         }
     }
 }
